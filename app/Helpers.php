@@ -233,6 +233,16 @@ class Config
         return self::config_entity()->eventbrite_token;
     }
 
+    public static function upload_tarea_timestamp()
+    {
+        return self::config_entity()->upload_tarea_timestamp;
+    }
+
+    public static function validate_tarea_timestamp()
+    {
+        return self::config_entity()->validate_tarea_timestamp;
+    }
+
 }
 
 class Time{
