@@ -98,13 +98,19 @@
                 <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->hours}}</td>
                 <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->status}}</td>
                 <td class="align-middle">
+
+                @if($contador->status == 'pausa')
                 <a class="btn btn-primary btn-sm" href="{{route('contador.play',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
                 Comenzar
                 </a>
+                @endIf
+
+                @if($contador->status== 'contando')
                 <a class="btn btn-secondary btn-sm"  href="{{route('contador.pausa',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
                 Pausar
                 
                 </a>
+                @endif
                 </td>
                 
 

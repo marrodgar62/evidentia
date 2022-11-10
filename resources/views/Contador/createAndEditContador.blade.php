@@ -31,7 +31,7 @@
                             
 
                             <div class="form-group col-md-3">
-                                <label for="comittee">Comité asociado</label>
+                                <label for="comittee">Tarea asociada</label>
                                 <select id="comittee" class="selectpicker form-control @error('tarea') is-invalid @enderror" name="tarea" value="{{ old('tarea') }}" required autofocus>
                                     @foreach($tareas as $tarea)
                                         @isset($contador)
@@ -44,7 +44,7 @@
                                             @endforeach
                                 </select>
 
-                                <small class="form-text text-muted">Elige un comité al que quieres asociar tu evidencia.</small>
+                                <small class="form-text text-muted">Elige una tarea a la que quieres asociar tu contador.</small>
 
                                 @error('tarea')
                                 <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                             
                             </div>
                             <div class="form-group col-md-4">
-                            <button type="submit" formaction="{{$route_publish}}" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-external-link-square-alt"></i> &nbsp;Sí, comenzar contador</button>
+                            <button type="submit" formaction="{{$route_publish}}" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-external-link-square-alt"></i> &nbsp;Sí, crear contador</button>
                             </div>
 
                         </div>

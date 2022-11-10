@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Carbon\Carbon;
 use App\Exports\MyEvidencesExport;
 use App\Models\Comittee;
 use App\Models\Contador;
@@ -64,7 +64,7 @@ class ContadorController extends Controller
         $contador = $this->new_contador($request);
 
 
-        return redirect()->route('tarea.list',$instance)->with('success', 'Contador creado con éxito.');
+        return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'Contador creado con éxito.');
 
     }
 
@@ -140,6 +140,18 @@ class ContadorController extends Controller
     {
         $instance = \Instantiation::instance();
         $contador = Contador::find($id);
+
+        $contados = $contador->hours;
+        $fechaNow = Carbon::now();
+        $fechaUpdate = $contador->updated_at;
+
+        $seg = $fechaUpdate->diffInSeconds($fechaNow);
+
+        $total = ($contados)*3600 + $seg;
+        
+        
+
+        $contador->hours= ($total)/3600;
         $contador->status = 'pausa';
         $contador->save();
         

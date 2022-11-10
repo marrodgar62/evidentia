@@ -35,7 +35,8 @@ class TareaController extends Controller
         $instance = \Instantiation::instance();
         $tarea = Tarea::find($id);
         $contadores = Contador::where(['tarea_id' => $id])->get();
-
+        $pausa = "pausa";
+        $contando ="contando";
         
         return view('tarea.view',
             ['instance' => $instance, 'tarea' => $tarea, 'contadores'=>$contadores]);
