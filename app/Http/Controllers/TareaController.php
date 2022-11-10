@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Exports\MyEvidencesExport;
 use App\Models\Comittee;
+use App\Models\Contador;
+
 //use App\Models\Evidence;
 //use App\Models\File;
 //use App\Models\Proof;
@@ -32,9 +34,11 @@ class TareaController extends Controller
     {
         $instance = \Instantiation::instance();
         $tarea = Tarea::find($id);
+        $contadores = Contador::where(['tarea_id' => $id])->get();
+
         
         return view('tarea.view',
-            ['instance' => $instance, 'tarea' => $tarea]);
+            ['instance' => $instance, 'tarea' => $tarea, 'contadores'=>$contadores]);
     }
 
     public function list()

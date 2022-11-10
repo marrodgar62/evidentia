@@ -27,6 +27,12 @@ class Tarea extends Model
         return $collection;
     }
 
+    public function contador()
+    {
+        return $this->hasMany('App\Models\Contador');
+    }
+
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

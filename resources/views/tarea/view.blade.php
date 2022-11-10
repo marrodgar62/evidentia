@@ -52,9 +52,7 @@
 
         </div>
 
-        <div class="col-lg-4">
-
-            <div class="card shadow-sm">
+        <div class="card shadow-sm">
 
                 <div class="card-body">
 
@@ -74,9 +72,49 @@
 
             </div>
 
-        </div>
 
+        <div class="card shadow-lg">
+
+<div class="card-body">
+    <h4>Contadores</h4>
+    <div class="table-responsive">
+        <table id="dataset" class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">ID</th>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Titulo</th>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Horas</th>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Cantidad total</th>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Status</th>
+            <th>Herramientas</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach($contadores as $contador)
+            <tr>
+                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->id}}</td>
+                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->titulo}}</td>
+                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->hours}}</td>
+                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->status}}</td>
+                
+
+
+            </tr>
+        @endforeach
+
+        </tbody>
+    </table>
     </div>
+</div>
+
+</div>
+
+
+        
+
+        
 
 
 @endsection
