@@ -84,7 +84,6 @@
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">ID</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Titulo</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Horas</th>
-            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Cantidad total</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Status</th>
             <th>Herramientas</th>
 

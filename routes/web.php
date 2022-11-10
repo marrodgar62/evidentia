@@ -477,5 +477,12 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
 
     });
 
+    /**
+     *  CONTADOR
+     */
+
+    Route::get('/contador/create', 'ContadorController@create')->name('contador.createAndEditContador');
+    Route::post('/contador/publish', 'ContadorController@publish')->name('contador.publish');
+
 
 });
