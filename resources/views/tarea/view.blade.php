@@ -97,6 +97,15 @@
                 <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->titulo}}</td>
                 <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->hours}}</td>
                 <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$contador->status}}</td>
+                <td class="align-middle">
+                <a class="btn btn-primary btn-sm" href="{{route('contador.play',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
+                Comenzar
+                </a>
+                <a class="btn btn-secondary btn-sm"  href="{{route('contador.pausa',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
+                Pausar
+                
+                </a>
+                </td>
                 
 
 

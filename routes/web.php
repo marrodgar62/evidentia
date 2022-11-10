@@ -483,6 +483,8 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
 
     Route::get('/contador/create', 'ContadorController@create')->name('contador.createAndEditContador');
     Route::post('/contador/publish', 'ContadorController@publish')->name('contador.publish');
+    Route::get('/contador/play/{id}', 'ContadorController@play')->name('contador.play');
+    Route::get('/contador/pausa/{id}', 'ContadorController@pausa')->name('contador.pausa');
 
 
 });

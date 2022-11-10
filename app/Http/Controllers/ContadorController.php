@@ -119,4 +119,32 @@ class ContadorController extends Controller
         
 
     }
+
+    //PLAY
+
+
+    public function play($instance, $id)
+    {
+        $instance = \Instantiation::instance();
+
+        $contador = Contador::find($id);
+        $contador->status = 'contando';
+        $contador->save();
+        
+        return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador ha comenzado.');
+    }
+
+
+
+    public function pausa($instance, $id)
+    {
+        $instance = \Instantiation::instance();
+        $contador = Contador::find($id);
+        $contador->status = 'pausa';
+        $contador->save();
+        
+        return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador se ha pausado.');
+    }
+
+   
 }
