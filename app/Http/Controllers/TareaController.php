@@ -140,4 +140,63 @@ class TareaController extends Controller
         
 
     }
+    /*public function edit($id)
+    {
+
+        $user = Auth::user();
+        $instance = \Instantiation::instance();
+        $token = session()->token();
+
+        $tarea = Tarea::find($id);
+        $comittees = null;
+        
+        $tmp = $instance.'/tmp/'.$user->username.'/'.$token.'/';
+
+        Storage::deleteDirectory($tmp);
+
+        // generamos un nuevo token
+        session()->regenerate();
+
+        // copiamos las pruebas a una carpeta temporal para poder trabajar con los mismos
+        
+
+        return view('tarea.edit', ['tarea' => $tarea, 'instance' => $instance,
+            'comittees' => null,
+            'edit' => true,
+            'route_draft' => null,
+    'route_publish' => null]);
+    }
+
+     function remove(Request $request)
+    {
+        $id = $request->_id;
+        $tarea = Tarea::find($id);
+        $instance = \Instantiation::instance();
+
+        // eliminamos recursivamente la tarea y todas las versiones anteriores, incluyendo archivos
+        $this->delete_tarea($tarea);
+
+        return redirect()->route('tarea.list',$instance)->with('success', 'Tarea borrada con éxito.');
+    }
+
+    private function delete_tarea($tarea)
+    {
+        $instance = \Instantiation::instance();
+        $user = Auth::user();
+
+        $this->delete_files($tarea);
+        Storage::deleteDirectory($instance.'/tarea_proofs/'.$user->username.'/tarea_'.$tarea->id.'');
+        $tarea->delete();
+    }
+
+    private function delete_files($tarea)
+    {
+        foreach($tarea->proof as $proofs)
+        {
+            $proof->file->delete();
+        }
+    }*/
+
+
 }
+

@@ -6,8 +6,10 @@
             <li class="nav-header">MIS COSAS</li>
             @if(!\Carbon\Carbon::now()->gt(\Config::upload_evidences_timestamp()))
             <x-li route="evidence.create" icon='fab fa-angellist' name="Crear evidencia"/>
+            <x-li route="tarea.createAndEditTarea" icon='fas fa-plus-square' name="Crear tarea"/>
             @endif
             <x-li route="evidence.list" secondaries="evidence.view,evidence.edit" icon='fas fa-id-badge' name="Mis evidencias"/>
+            <x-li route="tarea.list" icon='fas fa-list-ol' name="Mis tareas"/>
             <x-li route="meeting.list" icon='fas fa-cocktail' name="Mis reuniones"/>
             <x-li route="attendee.list" icon='fas fa-hiking' name="Mis asistencias"/>
             <!-- <x-li route="home" icon='fas fa-folder' name="Gestor de archivos"/> -->

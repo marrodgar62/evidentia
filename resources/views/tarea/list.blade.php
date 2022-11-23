@@ -44,7 +44,18 @@
                                 <i class="fas fa-eye"></i>
                                 <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
                                 </a>
+                                <!--<a class="btn btn-info btn-sm" href="{{route('tarea.edit',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
+                                </a>
+                                <a class="btn btn-info btn-sm" href="{{route('tarea.remove',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
+                                <i class="fas fa-trash-alt">
+                                </i>
+                                <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
+                                </a>-->
                                 </td>
+                                
 
 
                             </tr>
