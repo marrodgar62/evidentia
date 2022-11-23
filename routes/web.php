@@ -523,4 +523,33 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
      */
     Route::get('/updates','GitController@list')->name('updates.list');
 
+    /**
+     *  TAREA
+     */
+    
+    Route::get('/tarea/list', 'TareaController@list')->name('tarea.list');
+    /*Route::get('/tarea/edit', 'TareaController@edit')->name('tarea.edit');
+    Route::get('tarea/remove', 'TareaController@remove')->name('tarea.remove');*/
+    
+    Route::get('/tarea/create', 'TareaController@create')->name('tarea.createAndEditTarea');
+    Route::middleware(['checkuploadtarea'])->group(function () {
+        Route::post('/tarea/publish', 'TareaController@publish')->name('tarea.publish');
+    });
+
+    
+    Route::middleware(['checknotnull:Tarea','tareamine'])->group(function () {
+        Route::get('/tarea/view/{id}', 'TareaController@view')->name('tarea.view');
+
+    });
+
+    /**
+     *  CONTADOR
+     */
+
+    Route::get('/contador/create', 'ContadorController@create')->name('contador.createAndEditContador');
+    Route::post('/contador/publish', 'ContadorController@publish')->name('contador.publish');
+    Route::get('/contador/play/{id}', 'ContadorController@play')->name('contador.play');
+    Route::get('/contador/pausa/{id}', 'ContadorController@pausa')->name('contador.pausa');
+
+
 });
