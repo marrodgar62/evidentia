@@ -12,6 +12,8 @@
             <x-li route="tarea.list" icon='fas fa-list-ol' name="Mis tareas"/>
             <x-li route="meeting.list" icon='fas fa-cocktail' name="Mis reuniones"/>
             <x-li route="attendee.list" icon='fas fa-hiking' name="Mis asistencias"/>
+            <x-li route="incidence.createAndEditIncidence" icon='fas fa-exclamation' name="Crear incidencias"/>
+            <x-li route="incidence.list" icon='fas fa-exclamation' name="Incidencias"/>
             <!-- <x-li route="home" icon='fas fa-folder' name="Gestor de archivos"/> -->
 
         </ul>
