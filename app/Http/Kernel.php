@@ -70,6 +70,9 @@ class Kernel extends HttpKernel
         'checkroles' => \App\Http\Middleware\CheckRoles::class,
         'evidencecanbeedited' => \App\Http\Middleware\EvidenceCanBeEdited::class,
         'evidencemine' => \App\Http\Middleware\EvidenceMine::class,
+        'tareamine' => \App\Http\Middleware\TareaMine::class,
+        'checkuploadtarea' => \App\Http\Middleware\CheckUploadTarea::class,
+        'checkvalidatetarea' => \App\Http\Middleware\CheckValidateTarea::class,
         'evidencefrommycommittee' => \App\Http\Middleware\EvidenceFromMyComittee::class,
         'checkblock' => \App\Http\Middleware\CheckBlock::class,
         'checkuploadevidences' => \App\Http\Middleware\CheckUploadEvidences::class,
@@ -81,6 +84,12 @@ class Kernel extends HttpKernel
         'checkisadministrator' => \App\Http\Middleware\CheckIsAdministrator::class,
         'meetingrequestmine' => MeetingRequestMine::class,
         'signaturesheetmine' => SignatureSheetMine::class,
-        'meetingminutesmine' => MeetingMinutesMine::class
+        'meetingminutesmine' => MeetingMinutesMine::class,
+        'incidencemine' => \App\Http\Middleware\IncidenceMine::class,
+        'checkuploadincidence' => \App\Http\Middleware\CheckUploadIncidence::class,
+        'checkincidenceproofdownload' => \App\Http\Middleware\CheckIncidenceProofDownload::class,
+        'incidencefrommycommittee' => \App\Http\Middleware\IncidenceFromMyComittee::class,
+        'checkvalidateincidences' => \App\Http\Middleware\CheckValidateIncidence::class,
+        'checkincidenceisnotinreview' => \App\Http\Middleware\CheckIncidenceIsNotInReview::class
     ];
 }

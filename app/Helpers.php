@@ -130,6 +130,7 @@ class Stamp
         return $evidence;
     }
 
+
     public static function get_stamp_evidence($evidence)
     {
         $salt =  \Config::secret();
@@ -139,6 +140,30 @@ class Stamp
             $evidence->hours.
             $evidence->created_at.
             $evidence->upload_at.
+            $salt);
+    }
+
+    public static function compute_incidence($incidence)
+    {
+        $salt =  \Config::secret();
+        $incidence->stamp = hash('sha256',
+            $incidence->title.
+            $incidence->description.
+            $incidence->hours.
+            $incidence->created_at.
+            $incidence->upload_at.
+            $salt);
+        return $incidence;
+    }
+    public static function get_stamp_incidence($incidence)
+    {
+        $salt =  \Config::secret();
+        return hash('sha256',
+            $incidence->title.
+            $incidence->description.
+            $incidence->hours.
+            $incidence->created_at.
+            $incidence->upload_at.
             $salt);
     }
 }
@@ -198,6 +223,16 @@ class Config
         return self::config_entity()->validate_evidences_timestamp;
     }
 
+    public static function upload_incidences_timestamp()
+    {
+        return self::config_entity()->upload_incidences_timestamp;
+    }
+
+    public static function validate_incidences_timestamp()
+    {
+        return self::config_entity()->validate_incidences_timestamp;
+    }
+
     public static function meetings_timestamp()
     {
         return self::config_entity()->meetings_timestamp;
@@ -231,6 +266,16 @@ class Config
     public static function eventbrite_token()
     {
         return self::config_entity()->eventbrite_token;
+    }
+
+    public static function upload_tarea_timestamp()
+    {
+        return self::config_entity()->upload_tarea_timestamp;
+    }
+
+    public static function validate_tarea_timestamp()
+    {
+        return self::config_entity()->validate_tarea_timestamp;
     }
 
 }
