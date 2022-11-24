@@ -29,5 +29,6 @@ class Transaction extends Model
         }
 
         return $collection;
+        
     }
 }
