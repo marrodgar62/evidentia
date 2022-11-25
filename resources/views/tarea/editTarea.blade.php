@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Crear Tarea')
+@section('title', 'Editar Tarea')
 
-@section('title-icon', 'fas fa-exclamation')
+@section('title-icon', 'fas fa-pencil')
 
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="/{{ $instance ?? '' }}">Home</a></li>
@@ -26,15 +26,16 @@
 
                         <div class="form-row">
 
-                            <x-input col="5" attr="titulo" :value="$tarea->titulo" label="Título" description="Escribe un título que describa con precisión tu tarea (mínimo 5 caracteres)"/>
+                            <x-input col="5" attr="titulo"  label="Título" value="$tarea->titulo?" description="Escribe un título que describa con precisión tu tarea (mínimo 5 caracteres)"/>
                         
-                            <x-textarea col="12" attr="descripcion" :value="$tarea->descripcion"
+                            <x-textarea col="12" attr="descripcion"
                                         label="Descripción de la tarea"
+                                        value="$tarea->descripcion?"
                                         description="Escribe una descripción concisa de tu tarea (entre 10 y 20000 caracteres)."
                             />
 
                             <div class="form-group col-md-4">
-                            <button type="submit" formaction="{{$route_publish}}" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-external-link-square-alt"></i> &nbsp;Sí, publicar tarea</button>
+                            <button type="submit" formaction="{{$route_publish}}" class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fas fa-external-link-square-alt"></i> &nbsp;Actualizar tarea</button>
                             </div>
 
                             

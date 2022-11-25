@@ -39,11 +39,11 @@
                         <br><br>
 
 
-                        
 
 
                     </div>
 
+                
 
 
                 </div>
@@ -51,7 +51,7 @@
             </div>
 
         </div>
-
+            
         <div class="card shadow-sm">
 
                 <div class="card-body">
@@ -108,9 +108,13 @@
                 @if($contador->status== 'contando')
                 <a class="btn btn-secondary btn-sm"  href="{{route('contador.pausa',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
                 Pausar
-                
+                </a>
+                <a class="btn btn-secondary btn-sm"  href="{{route('contador.terminada',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
+                Terminar
                 </a>
                 @endif
+            
+                
                 </td>
                 
 

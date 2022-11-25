@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendeeController;
+use App\Http\Controllers\TareaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\MeetingSecretaryController;
 use App\Http\Controllers\MeetingController;
@@ -528,13 +529,14 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
      */
     
     Route::get('/tarea/list', 'TareaController@list')->name('tarea.list');
-    /*Route::get('/tarea/edit', 'TareaController@edit')->name('tarea.edit');
-    Route::get('tarea/remove', 'TareaController@remove')->name('tarea.remove');*/
+    Route::get('/tarea/edit', 'TareaController@edit')->name('tarea.editTarea');
+    Route::get('tarea/remove', 'TareaController@remove')->name('tarea.remove');
     
     Route::get('/tarea/create', 'TareaController@create')->name('tarea.createAndEditTarea');
     Route::middleware(['checkuploadtarea'])->group(function () {
         Route::post('/tarea/publish', 'TareaController@publish')->name('tarea.publish');
     });
+    Route::get('/tarea/list/export/{ext}',[TareaController::class , 'export'])->name('tarea.list.export');
 
     
     Route::middleware(['checknotnull:Tarea','tareamine'])->group(function () {
@@ -550,6 +552,8 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
     Route::post('/contador/publish', 'ContadorController@publish')->name('contador.publish');
     Route::get('/contador/play/{id}', 'ContadorController@play')->name('contador.play');
     Route::get('/contador/pausa/{id}', 'ContadorController@pausa')->name('contador.pausa');
+    Route::get('/contador/terminada/{id}', 'ContadorController@terminada')->name('contador.terminada');
+    
 
 
 });
