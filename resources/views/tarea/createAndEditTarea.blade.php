@@ -26,9 +26,9 @@
 
                         <div class="form-row">
 
-                            <x-input col="5" attr="titulo" :value="$tarea->titulo" label="Título" description="Escribe un título que describa con precisión tu tarea (mínimo 5 caracteres)"/>
+                            <x-input col="5" attr="titulo" :value="$tarea->titulo ?? ''" label="titulo" description="Escribe un título que describa con precisión tu tarea (mínimo 5 caracteres)"/>
                         
-                            <x-textarea col="12" attr="descripcion" :value="$tarea->descripcion"
+                            <x-textarea col="12" attr="descripcion" :value="$tarea->descripcion ?? ''"
                                         label="Descripción de la tarea"
                                         description="Escribe una descripción concisa de tu tarea (entre 10 y 20000 caracteres)."
                             />
