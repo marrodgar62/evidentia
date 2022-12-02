@@ -34,55 +34,56 @@
             
 
             <div class="card shadow-lg">
-
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table id="dataset" class="table table-hover table-responsive">
-                        <thead>
-                        <tr>
-                            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">ID</th>
-                            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Titulo</th>
-                            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Descripcion</th>
-                            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Cantidad total</th>
-                            <th>Herramientas</th>
-
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach($tareas as $tarea)
+                <a class="btn btn-secondary btn-sm" href="{{route('tarea.createAndEditTarea',['instance' => \Instantiation::instance()])}}">NUEVA TAREA</a>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="dataset" class="table table-hover table-responsive">
+                            <thead>
                             <tr>
-                                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->id}}</td>
-                                <td><a href="{{route('tarea.view',['instance' => $instance, 'id' => $tarea->id])}}">{{$tarea->titulo}}</a></td>
-                                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->descripcion}}</td>
-                                <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->cantidad_total}}</td>
-                                <td class="align-middle">
-                                <a class="btn btn-primary btn-sm" href="{{route('tarea.view',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
-                                <i class="fas fa-eye"></i>
-                                <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
-                                </a>
-                                <!--<a class="btn btn-info btn-sm" href="{{route('tarea.editTarea',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                                <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
-                                </a>
-                                <a class="btn btn-info btn-sm" href="{{route('tarea.remove',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
-                                <i class="fas fa-trash">
-                                </i>
-                                <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
-                                </a>-->
-                                </td>
-                                
-
+                                <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">ID</th>
+                                <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Titulo</th>
+                                <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Descripcion</th>
+                                <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Cantidad total</th>
+                                <th>Herramientas</th>
 
                             </tr>
-                        @endforeach
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
+                            @foreach($tareas as $tarea)
+                                <tr>
+                                    <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->id}}</td>
+                                    <td><a href="{{route('tarea.view',['instance' => $instance, 'id' => $tarea->id])}}">{{$tarea->titulo}}</a></td>
+                                    <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->descripcion}}</td>
+                                    <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->cantidad_total}}</td>
+                                    <td class="align-middle">
+                                    <a class="btn btn-primary btn-sm" href="{{route('tarea.view',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
+                                    <i class="fas fa-eye"></i>
+                                    <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
+                                    </a>
+                                    <!--<a class="btn btn-info btn-sm" href="{{route('tarea.editTarea',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="{{route('tarea.remove',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    <span class="d-none d-sm-none d-md-none d-lg-inline"></span>
+                                    </a>-->
+                                    </td>
+                                    
+
+
+                                </tr>
+                            @endforeach
+
+                            </tbody>
+                        </table>
+                        </div>
                     </div>
                 </div>
-
             </div>
 
         </div>

@@ -77,6 +77,9 @@
 
 <div class="card-body">
     <h4>Contadores</h4>
+    <div class="card-body">
+    <a class="btn btn-primary btn-sm" href="{{route('contador.createAndEditContador',['instance' => \Instantiation::instance()])}}">AÑADIR CONTADOR</a>
+    </div>
     <div class="table-responsive">
         <table id="dataset" class="table table-hover table-responsive">
         <thead>
