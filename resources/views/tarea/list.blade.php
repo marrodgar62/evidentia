@@ -55,7 +55,7 @@
                                 <tr>
                                     <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->id}}</td>
                                     <td><a href="{{route('tarea.view',['instance' => $instance, 'id' => $tarea->id])}}">{{$tarea->titulo}}</a></td>
-                                    <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->descripcion}}</td>
+                                    <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{!! $tarea->descripcion !!}</td>
                                     <td class="d-none d-sm-none d-md-table-cell d-lg-table-cell">{{$tarea->cantidad_total}}</td>
                                     <td class="align-middle">
                                     <a class="btn btn-primary btn-sm" href="{{route('tarea.view',['instance' => \Instantiation::instance(), 'id' => $tarea->id])}}">
