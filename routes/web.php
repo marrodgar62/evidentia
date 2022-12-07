@@ -530,8 +530,8 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
     
     Route::get('/tarea/list', 'TareaController@list')->name('tarea.list');
     Route::get('/tarea/edit', 'TareaController@edit')->name('tarea.editTarea');
-    Route::get('tarea/remove', 'TareaController@remove')->name('tarea.remove');
-    
+    Route::post('/tarea/remove', 'TareaController@remove')->name('tarea.remove');
+
     Route::get('/tarea/create', 'TareaController@create')->name('tarea.createAndEditTarea');
     Route::middleware(['checkuploadtarea'])->group(function () {
         Route::post('/tarea/publish', 'TareaController@publish')->name('tarea.publish');

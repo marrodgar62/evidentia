@@ -211,6 +211,41 @@ class TareaController extends Controller
         }
     }
 
+    public function remove(Request $request)
+    {
+        $id = $request->_id;
+        $tarea = Tarea::find($id);
+        $instance = \Instantiation::instance();
+
+        // eliminamos recursivamente la evidencia y todas las versiones anteriores, incluyendo archivos
+        $this->delete_tarea($tarea);
+
+        return redirect()->route('tarea.list',$instance)->with('success', 'Tarea borrada con éxito.');
+    }
+
+    private function delete_tarea($tarea)
+    {
+        $instance = \Instantiation::instance();
+        $user = Auth::user();
+
+        // por si la evidencia apunta a otra anterior
+        $tarea_previous = Tarea::find($tarea->points_to);
+
+        // eliminamos los archivos almacenados
+        $tarea->delete();
+
+
+        if($tarea_previous != null)
+        {
+            $this->delete_tarea($tarea_previous);
+        }
+    }
+
+   
+
+
+    
+
 
 }
 

@@ -43,6 +43,8 @@
 
                     </div>
 
+                    <x-buttonconfirm :id="$tarea->id" route="tarea.remove" title="¿Seguro?" description="Esto borrará la tarea actual y todos los contadores adjuntos.</b>" type="REMOVE"/>
+
                 
 
 

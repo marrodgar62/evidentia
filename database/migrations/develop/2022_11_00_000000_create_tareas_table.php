@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContadorTable extends Migration
+class CreateTareasTable extends Migration
 {
 
     protected $connection = 'base21';
@@ -18,13 +18,12 @@ class CreateContadorTable extends Migration
     public function up()
     {
 
-        Schema::create('contadores', function (Blueprint $table) {
+        Schema::create('tareas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tarea_id')->references('id')->on('tareas')->onDelete('cascade');
+            $table->foreignId('user_id');
             $table->string('titulo');
-            $table->float('hours')->default(0);
-            $table->enum('status',['pausa','contando','terminada']);
-            $table->timestamp('pause_datetime')->nullable();
+            $table->string('descripcion');
+            $table->float('cantidad_total')->default(0);
             $table->timestamps();
         });
 
@@ -37,6 +36,6 @@ class CreateContadorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contadores');
+        Schema::dropIfExists('tareas');
     }
 }
