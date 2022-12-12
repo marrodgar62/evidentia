@@ -81,4 +81,20 @@ class IncidenceTest extends TestCase
         $response->assertStatus(302);
     }
 
+    public function testViewIncidence()
+    {  
+        $this->testLoginAlumno();
+
+
+        $response = $this->get('/incidence/view/2');
+        $response->assertStatus(302);
+    }
+
+    public function testExportIncidenceListCSV(){
+        $this->testLoginAlumno();
+
+        $response = $this->get('/incidence/export/mine/csv/');
+        $response->assertStatus(302);
+    }
+
 }
