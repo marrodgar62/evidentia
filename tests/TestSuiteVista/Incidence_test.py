@@ -13,7 +13,7 @@ import time
 input_login = '/html/body/div[1]/div[2]/div/form/div[2]/input'
 input_password = '/html/body/div[1]/div[2]/div/form/div[3]/input'
 input_submit = '/html/body/div[1]/div[2]/div/form/div[5]/div[2]/button'
-crear_incidencia = '/html/body/div[1]/aside[1]/div/nav[2]/ul/li[6]/a/p'
+crear_incidencia = '/html/body/div[1]/aside[1]/div/nav[2]/ul/li[9]'
 input_titulo = '/html/body/div[1]/div[1]/section/div/form/div/div[1]/div/div/div/div[1]/input'
 input_incidencia = '/html/body/div[1]/div[1]/section/div/form/div/div[1]/div/div/div/div[3]/div/div[3]/div[2]'
 input_submit_incidencia = '/html/body/div[1]/div[1]/section/div/form/div/div[1]/div/div/div/div[4]/button'
