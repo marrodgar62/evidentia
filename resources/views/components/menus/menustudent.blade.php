@@ -7,6 +7,7 @@
             @if(!\Carbon\Carbon::now()->gt(\Config::upload_evidences_timestamp()))
             <x-li route="evidence.create" icon='fab fa-angellist' name="Crear evidencia"/>
             <x-li route="tarea.createAndEditTarea" icon='fas fa-plus-square' name="Crear tarea"/>
+            <x-li route="contador.createAndEditContador" icon='fas fa-clock' name="Crear Contador"/>
             @endif
             <x-li route="evidence.list" secondaries="evidence.view,evidence.edit" icon='fas fa-id-badge' name="Mis evidencias"/>
             <x-li route="tarea.list" icon='fas fa-list-ol' name="Mis tareas"/>
