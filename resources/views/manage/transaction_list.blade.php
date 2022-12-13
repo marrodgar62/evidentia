@@ -44,8 +44,8 @@
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Tipo</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Cantidad</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Fecha</th>
-            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Estado</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Comité</th>
+            <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Estado</th>
             <th class="d-none d-sm-none d-md-table-cell d-lg-table-cell">Acciones</th>
         </tr>
         </thead>
