@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class IncidenceTest extends TestCase
+class ContadorTest extends TestCase
 {
     /**
      * A basic test example.
@@ -41,60 +41,26 @@ class IncidenceTest extends TestCase
 
     }
 
-    public function testListIncidence()
+    public function testListContador()
     {  
         $this->testLoginAlumno();
 
-        $response = $this->get('/incidence/list');
+        $response = $this->get('/contador/list');
         $response->assertStatus(302);
     }
 
-    public function testCreateIncidence()
+    public function testCreateContador()
     {
         
         $this->testLoginAlumno();
 
         $request = [
-            'title' => 'Test incidence title',
-            'description' => 'Test incidence description',
-            'comittee_id' => '1',
+            'title' => 'Clock Test Title',
+            'status' => 'pausa',
         ];
 
-        $response = $this->post('/incidence/create/',$request);
+        $response = $this->post('/contador/create/',$request);
 
         $response->assertStatus(302);
     }
-    public function testLoginCoordinador(){
-        $request = [
-            'username' => 'coordinador1',
-            'password' => 'coordinador1'
-        ];
-        $response = $this->post('login_p',$request);
-        $response->assertSessionDoesntHaveErrors();
-
-    }
-    public function testListIncidenceCoordinador()
-    {  
-        $this->testLoginCoordinador();
-
-        $response = $this->get('/coordinador/incidence/list');
-        $response->assertStatus(302);
-    }
-
-    public function testViewIncidence()
-    {  
-        $this->testLoginAlumno();
-
-
-        $response = $this->get('/incidence/view/2');
-        $response->assertStatus(302);
-    }
-
-    public function testExportIncidenceListCSV(){
-        $this->testLoginAlumno();
-
-        $response = $this->get('/incidence/export/mine/csv/');
-        $response->assertStatus(302);
-    }
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendeeController;
+use App\Http\Controllers\TareaController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\MeetingSecretaryController;
 use App\Http\Controllers\MeetingController;
@@ -522,5 +523,37 @@ Route::group(['prefix' => '{instance}', 'middleware' => ['checkblock']], functio
      *  GIT
      */
     Route::get('/updates','GitController@list')->name('updates.list');
+
+    /**
+     *  TAREA
+     */
+    
+    Route::get('/tarea/list', 'TareaController@list')->name('tarea.list');
+    Route::get('/tarea/edit', 'TareaController@edit')->name('tarea.editTarea');
+    Route::post('/tarea/remove', 'TareaController@remove')->name('tarea.remove');
+
+    Route::get('/tarea/create', 'TareaController@create')->name('tarea.createAndEditTarea');
+    Route::middleware(['checkuploadtarea'])->group(function () {
+        Route::post('/tarea/publish', 'TareaController@publish')->name('tarea.publish');
+    });
+    Route::get('/tarea/list/export/{ext}',[TareaController::class , 'export'])->name('tarea.list.export');
+
+    
+    Route::middleware(['checknotnull:Tarea','tareamine'])->group(function () {
+        Route::get('/tarea/view/{id}', 'TareaController@view')->name('tarea.view');
+
+    });
+
+    /**
+     *  CONTADOR
+     */
+
+    Route::get('/contador/create', 'ContadorController@create')->name('contador.createAndEditContador');
+    Route::post('/contador/publish', 'ContadorController@publish')->name('contador.publish');
+    Route::get('/contador/play/{id}', 'ContadorController@play')->name('contador.play');
+    Route::get('/contador/pausa/{id}', 'ContadorController@pausa')->name('contador.pausa');
+    Route::get('/contador/terminada/{id}', 'ContadorController@terminada')->name('contador.terminada');
+    
+
 
 });

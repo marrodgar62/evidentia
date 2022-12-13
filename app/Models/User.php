@@ -106,6 +106,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Attendee');
     }
 
+    public function tareas()
+    {
+        return $this->hasMany('App\Models\Tarea');
+    }
+
     public function signature_sheets()
     {
         return $this->belongsToMany('App\Models\SignatureSheet')->withTimestamps()->orderByDesc('created_at');
