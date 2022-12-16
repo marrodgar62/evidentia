@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\MyEvidencesExport;
+use App\Exports\MyTasksExport;
 use App\Models\Comittee;
 use App\Models\Contador;
 
@@ -160,14 +160,14 @@ class TareaController extends Controller
         // copiamos las pruebas a una carpeta temporal para poder trabajar con los mismos
         
 
-        return view('tarea.edit', ['tarea' => $tarea, 'instance' => $instance,
-            'comittees' => null,
-            'edit' => true,
-            'route_draft' => null,
-    'route_publish' => null]);
+        return view('tarea.editTarea', ['route_publish' => route('tarea.publish',$instance),
+        'instance' => $instance
+            ]);
+        
+            
     }
 
-     function remove(Request $request)
+    function remove(Request $request)
     {
         $id = $request->_id;
         $tarea = Tarea::find($id);
@@ -179,23 +179,72 @@ class TareaController extends Controller
         return redirect()->route('tarea.list',$instance)->with('success', 'Tarea borrada con éxito.');
     }
 
-    private function delete_tarea($tarea)
+    /*private function delete_tarea($tarea)
     {
         $instance = \Instantiation::instance();
         $user = Auth::user();
 
         $this->delete_files($tarea);
-        Storage::deleteDirectory($instance.'/tarea_proofs/'.$user->username.'/tarea_'.$tarea->id.'');
+        Storage::deleteDirectory($instance.'/contador/'.$user->username.'/tarea_'.$tarea->id.'');
+        //Storage::deleteDirectory($instance.$tarea->id)
         $tarea->delete();
+        
     }
 
     private function delete_files($tarea)
     {
-        foreach($tarea->proof as $proofs)
-        {
-            $proof->file->delete();
+        
+        foreach($tarea->contador as $contadores){
+            $contador->push($contadores);
         }
     }*/
+    public function export($instance, $ext)
+    {
+        try {
+            ob_end_clean();
+            if(!in_array($ext, ['csv', 'pdf', 'xlsx'])){
+                return back()->with('error', 'Solo se permite exportar los siguientes formatos: csv, pdf y xlsx');
+            }
+            return Excel::download(new MyTasksExport(), 'mistareas-' . \Illuminate\Support\Carbon::now() . '.' . $ext);
+        } catch (\Exception $e) {
+            return back()->with('error', 'Ocurrió un error: ' . $e->getMessage());
+        }
+    }
+
+    public function remove(Request $request)
+    {
+        $id = $request->_id;
+        $tarea = Tarea::find($id);
+        $instance = \Instantiation::instance();
+
+        // eliminamos recursivamente la evidencia y todas las versiones anteriores, incluyendo archivos
+        $this->delete_tarea($tarea);
+
+        return redirect()->route('tarea.list',$instance)->with('success', 'Tarea borrada con éxito.');
+    }
+
+    private function delete_tarea($tarea)
+    {
+        $instance = \Instantiation::instance();
+        $user = Auth::user();
+
+        // por si la evidencia apunta a otra anterior
+        $tarea_previous = Tarea::find($tarea->points_to);
+
+        // eliminamos los archivos almacenados
+        $tarea->delete();
+
+
+        if($tarea_previous != null)
+        {
+            $this->delete_tarea($tarea_previous);
+        }
+    }
+
+   
+
+
+    
 
 
 }

@@ -20,7 +20,7 @@ class CreateContadorTable extends Migration
 
         Schema::create('contadores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tarea_id');
+            $table->foreignId('tarea_id')->references('id')->on('tareas')->onDelete('cascade');
             $table->string('titulo');
             $table->float('hours')->default(0);
             $table->enum('status',['pausa','contando','terminada']);

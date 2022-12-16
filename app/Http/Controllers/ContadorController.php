@@ -130,18 +130,23 @@ class ContadorController extends Controller
 
         $contador = Contador::find($id);
         $contadores_de_tarea = Contador::where(['tarea_id'=>$contador->tarea_id])->get();
+        $var = 0;
+
         for ($i=0; $i < count($contadores_de_tarea); $i++ ){
             if($contadores_de_tarea[$i]->status == 'contando'){
-                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id, 'instance'=>$instance])->with('error', 'Ya hay un contador en marcha.');
-            }else{
-                $contador->status = 'contando';
-                $contador->save();
-        
-                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador ha comenzado.');
+                $var = 1;
             }
         }
 
+        if($var == 0){
+            $contador->status = 'contando';
+                $contador->save();
+        
+                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador ha comenzado.');
+        }else{
+            return redirect()->route('tarea.view', ['id'=> $contador->tarea_id, 'instance'=>$instance])->with('error', 'Ya hay un contador en marcha.');
 
+        }
         
     }
 
@@ -172,6 +177,30 @@ class ContadorController extends Controller
         
         return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador se ha pausado.');
     }
+    public function terminada($instance, $id)
+    {
+        $instance = \Instantiation::instance();
+        $contador = Contador::find($id);
 
+        $contados = $contador->hours;
+        $fechaNow = Carbon::now();
+        $fechaUpdate = $contador->updated_at;
+
+        $seg = $fechaUpdate->diffInSeconds($fechaNow);
+        $total = ($contados)*3600 + $seg;
+        
+
+        $contador->hours= ($total)/3600;
+        $contador->status = 'terminada';
+        $contador->save();
+
+       
+        $tarea = Tarea::where(['id' => $contador->tarea_id])->first();
+        $tarea->cantidad_total = $tarea->cantidad_total + ($seg)/3600;
+        $tarea->save();
+
+        
+        return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador se ha parado definitivamente.');
+    }
    
 }

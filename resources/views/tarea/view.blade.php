@@ -39,11 +39,13 @@
                         <br><br>
 
 
-                        
 
 
                     </div>
 
+                    <x-buttonconfirm :id="$tarea->id" route="tarea.remove" title="¿Seguro?" description="Esto borrará la tarea actual y todos los contadores adjuntos.</b>" type="REMOVE"/>
+
+                
 
 
                 </div>
@@ -51,7 +53,7 @@
             </div>
 
         </div>
-
+            
         <div class="card shadow-sm">
 
                 <div class="card-body">
@@ -77,6 +79,9 @@
 
 <div class="card-body">
     <h4>Contadores</h4>
+    <div class="card-body">
+    <a class="btn btn-primary btn-sm" href="{{route('contador.createAndEditContador',['instance' => \Instantiation::instance()])}}">AÑADIR CONTADOR</a>
+    </div>
     <div class="table-responsive">
         <table id="dataset" class="table table-hover table-responsive">
         <thead>
@@ -108,9 +113,13 @@
                 @if($contador->status== 'contando')
                 <a class="btn btn-secondary btn-sm"  href="{{route('contador.pausa',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
                 Pausar
-                
+                </a>
+                <a class="btn btn-secondary btn-sm"  href="{{route('contador.terminada',['instance' => \Instantiation::instance(), 'id' => $contador->id])}}">
+                Terminar
                 </a>
                 @endif
+            
+                
                 </td>
                 
 
