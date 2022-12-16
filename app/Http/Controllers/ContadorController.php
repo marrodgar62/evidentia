@@ -130,18 +130,23 @@ class ContadorController extends Controller
 
         $contador = Contador::find($id);
         $contadores_de_tarea = Contador::where(['tarea_id'=>$contador->tarea_id])->get();
+        $var = 0;
+
         for ($i=0; $i < count($contadores_de_tarea); $i++ ){
             if($contadores_de_tarea[$i]->status == 'contando'){
-                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id, 'instance'=>$instance])->with('error', 'Ya hay un contador en marcha.');
-            }else{
-                $contador->status = 'contando';
-                $contador->save();
-        
-                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador ha comenzado.');
+                $var = 1;
             }
         }
 
+        if($var == 0){
+            $contador->status = 'contando';
+                $contador->save();
+        
+                return redirect()->route('tarea.view', ['id'=> $contador->tarea_id,'instance'=>$instance])->with('success', 'El contador ha comenzado.');
+        }else{
+            return redirect()->route('tarea.view', ['id'=> $contador->tarea_id, 'instance'=>$instance])->with('error', 'Ya hay un contador en marcha.');
 
+        }
         
     }
 
