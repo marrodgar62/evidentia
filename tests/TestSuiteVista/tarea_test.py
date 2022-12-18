@@ -48,7 +48,9 @@ class Suite(unittest.TestCase):
     def test_create_tarea_positive(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
@@ -71,7 +73,9 @@ class Suite(unittest.TestCase):
     def test_create_tarea_negative(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
@@ -95,7 +99,9 @@ class Suite(unittest.TestCase):
     def test_list_tarea(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless")
         #options.add_argument('--headless')
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
@@ -118,8 +124,9 @@ class Suite(unittest.TestCase):
 
         #Driver options
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox")
-        #options.add_argument('--headless')
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
