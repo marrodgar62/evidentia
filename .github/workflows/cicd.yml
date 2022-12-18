@@ -43,7 +43,7 @@ jobs:
           rm composer.lock
           composer install --no-scripts
           composer update
-
+      
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
@@ -51,16 +51,16 @@ jobs:
           php artisan migrate
           php artisan db:seed
           php artisan db:seed --class=InstancesTableSeeder
+
       - name: Run Testsuite
         run: vendor/bin/phpunit tests/
-
+        
   deployment:
     name: Push Docker image to Docker Hub
     needs: phpunit
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-
       - name: Check out the repo
         uses: actions/checkout@v2
 
