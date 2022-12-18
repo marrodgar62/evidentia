@@ -43,7 +43,7 @@ jobs:
           rm composer.lock
           composer install --no-scripts
           composer update
-
+      
       - name: Prepare Laravel Application
         run: |
           cp .env.ci .env
@@ -55,6 +55,13 @@ jobs:
       - name: Run Testsuite PHPUNIT
         run: vendor/bin/phpunit tests/
         
+      - name: Open evidentia
+        run: |
+           php artisan evidentia:start docker
+           php artisan evidentia:instance
+           php artisan key:generate
+           php artisan config:cache
+            
       - name: Run Testsuite View
         run:  sh test_python.sh
 
