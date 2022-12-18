@@ -52,19 +52,9 @@ jobs:
           php artisan db:seed
           php artisan db:seed --class=InstancesTableSeeder
 
-      - name: Run Testsuite PHPUNIT
+      - name: Run Testsuite
         run: vendor/bin/phpunit tests/
         
-      - name: Open evidentia
-        run: |
-           php artisan evidentia:start docker
-           php artisan evidentia:instance
-           php artisan key:generate
-           php artisan config:cache
-            
-      - name: Run Testsuite View
-        run:  sh test_python.sh
-
   deployment:
     name: Push Docker image to Docker Hub
     needs: phpunit
