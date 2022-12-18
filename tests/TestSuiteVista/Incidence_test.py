@@ -38,17 +38,17 @@ input_incidencia_corta = '/html/body/div[1]/div[1]/section/div/form/div/div[1]/d
 
 #Functions to click and send keys
 def click_element(driver, element):
-    time.sleep(1)
+    
     WebDriverWait(driver, 2)\
         .until(EC.element_to_be_clickable((By.XPATH, element))).click()
 
 def send_keys(driver, element, keys):
-    time.sleep(1)
+    
     WebDriverWait(driver, 2)\
         .until(EC.element_to_be_clickable((By.XPATH, element))).send_keys(keys)
         
 def check_element(driver, element, keys):
-    time.sleep(1)
+    
     WebDriverWait(driver, 2)\
         .until(EC.assertEqual(keys))
 
@@ -61,7 +61,6 @@ class Suite(unittest.TestCase):
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
-        time.sleep(2)
 
         #Login
         send_keys(driver, input_login, 'alumno1')
@@ -88,7 +87,6 @@ class Suite(unittest.TestCase):
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
-        time.sleep(2)
 
         #Login
         send_keys(driver, input_login, 'alumno1')
@@ -118,7 +116,6 @@ class Suite(unittest.TestCase):
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
-        time.sleep(2)
 
         #Login
         send_keys(driver, input_login, 'coordinador1')
@@ -141,7 +138,6 @@ class Suite(unittest.TestCase):
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
-        time.sleep(2)
 
         #Login
         send_keys(driver, input_login, 'coordinador1')
