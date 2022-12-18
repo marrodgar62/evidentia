@@ -51,8 +51,12 @@ jobs:
           php artisan migrate
           php artisan db:seed
           php artisan db:seed --class=InstancesTableSeeder
-      - name: Run Testsuite
+
+      - name: Run Testsuite PHPUNIT
         run: vendor/bin/phpunit tests/
+        
+      - name: Run Testsuite View
+          run:  sh test_python.sh
 
   deployment:
     name: Push Docker image to Docker Hub
@@ -60,7 +64,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
-
       - name: Check out the repo
         uses: actions/checkout@v2
 
