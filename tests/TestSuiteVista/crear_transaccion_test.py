@@ -38,9 +38,6 @@ class Suite(unittest.TestCase):
         incidencia_con_exito = '/html/body/div[2]/div/div[2]'
 
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
@@ -92,11 +89,8 @@ class Suite(unittest.TestCase):
         incidencia_con_no_exito = '/html/body/div[1]/div[1]/section/div/form/div/div/div/div/div/div[1]/span/strong'
 
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
 
-        
+
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()

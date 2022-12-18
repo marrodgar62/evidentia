@@ -25,9 +25,6 @@ class Suite(unittest.TestCase):
                 .until(EC.element_to_be_clickable((By.XPATH, element))).send_keys(keys)
 
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         input_login = '/html/body/div[1]/div[2]/div/form/div[2]/input'
         input_password = '/html/body/div[1]/div[2]/div/form/div[3]/input'

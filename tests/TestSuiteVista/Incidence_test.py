@@ -57,9 +57,6 @@ class Suite(unittest.TestCase):
     def test_create_incidence_positive(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless") 
 
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
@@ -86,9 +83,6 @@ class Suite(unittest.TestCase):
     def test_create_incidence_negative(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()
@@ -117,9 +111,6 @@ class Suite(unittest.TestCase):
     def test_list_incidence(self):
         #Driver options
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
         #options.add_argument('--headless')
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
@@ -142,9 +133,6 @@ class Suite(unittest.TestCase):
 
         #Driver options
         options = webdriver.ChromeOptions()
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
-        options.add_argument("--headless")
         #options.add_argument('--headless')
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
