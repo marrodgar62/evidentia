@@ -91,7 +91,7 @@ class Suite(unittest.TestCase):
         incidencia_con_no_exito = '/html/body/div[1]/div[1]/section/div/form/div/div/div/div/div/div[1]/span/strong'
 
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox"); // Bypass OS security model
+        options.addArguments("--no-sandbox")
         driver = webdriver.Chrome(options=options)
         driver.get("http://localhost/21/login")
         driver.maximize_window()

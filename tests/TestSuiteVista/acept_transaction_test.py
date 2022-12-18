@@ -27,8 +27,7 @@ class Suite(unittest.TestCase):
 
 
         options = webdriver.ChromeOptions()
-        options.addArguments("--no-sandbox"); // Bypass OS security model
-        
+        options.addArguments("--no-sandbox")
         driver = webdriver.Chrome(options=options)
         input_login = '/html/body/div[1]/div[2]/div/form/div[2]/input'
         input_password = '/html/body/div[1]/div[2]/div/form/div[3]/input'
