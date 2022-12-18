@@ -56,7 +56,7 @@ jobs:
         run: vendor/bin/phpunit tests/
         
       - name: Run Testsuite View
-          run:  sh test_python.sh
+        run:  sh test_python.sh
 
   deployment:
     name: Push Docker image to Docker Hub
