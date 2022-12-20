@@ -63,7 +63,7 @@
                         @if($transaction->status == "PENDING")
 
                             <div class="progress progress-sm">
-                                <div class="progress-bar bg-gradient-gray-dark" data-toggle="tooltip" data-placement="right" title="Pendiente de revisión" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 66%">
+                                <div class="progress-bar bg-gradient-warning" data-toggle="tooltip" data-placement="right" title="Pendiente de revisión" role="progressbar" aria-volumenow="66" aria-volumemin="0" aria-volumemax="100" style="width: 66%">
                                 </div>
                             </div>
 
